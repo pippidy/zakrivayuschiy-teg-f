@@ -1,20 +1,82 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-
-*/
-
 .page {
+  max-inline-size: 696px;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  margin: 0 auto;
+  font-family: var(--font-family-main, "Arial, sans-serif");
+  font-variation-settings: var(--font-var-main);
+  color: var(--clr-accent);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 200px auto 95px;
+  justify-content: center;
+  min-block-size: 365px;
+  margin-block: 100px;
+  border: 1px solid var(--clr-accent);
+  font-family: var(--font-family-accent, "Courier, monospace");
+  color: var(--clr-accent, #000);
+  text-transform: uppercase;
+}
+
+.header__title-main,
+.header__title-sub {
+  text-align: center;
+}
+
+.header__title-main {
+  align-self: end;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title-sub {
+  align-self: center;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.theme-menu__list {
+  position: relative;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.theme-menu__item {
+  inline-size: 100%;
+}
+
+.theme-menu__button {
+  position: relative;
+  background: transparent;
+  border: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.theme-menu__button:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+.theme-menu__button:disabled {
+  opacity: .6;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -20px;
+}
+
+@media (max-width: 375px) {
+  .header {
+    grid-template-rows: 170px auto 95px;
+    min-block-size: 325px;
+  }
 }
