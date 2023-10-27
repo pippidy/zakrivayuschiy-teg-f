@@ -324,10 +324,6 @@
   transform-origin: center;
 }
 
-.heart__contour {
-  fill: var(--clr-accent, #000);
-}
-
 .heart__sparks {
   fill: var(--clr-heart);
   opacity: 0;
@@ -338,6 +334,7 @@
   fill: var(--clr-main, #fff);
 }
 
+.heart__contour,
 .like-icon:hover .heart__core,
 .like-icon:hover .heart__main-body {
   fill: var(--clr-accent, #000);
