@@ -4,4 +4,36 @@
 
     --clr-main: #000;
     --clr-accent: #00CC14;
+
+    --bg-main:
+        repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(to bottom, #000, #000 2px, transparent 2px, transparent 4px),
+        linear-gradient(to bottom, #007f0c, #004306);
+}
+
+
+.theme-dark .button-animated > span,
+.theme-dark .button-animated__svg {
+    --clr-main: var(--clr-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --font-var-main: 465;
+        --font-var-title: 785;
+
+        --clr-main: #000;
+        --clr-accent: #00CC14;
+
+        --bg-main:
+            repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),
+            repeating-linear-gradient(to bottom, #000, #000 2px, transparent 2px, transparent 4px),
+            linear-gradient(to bottom, #007f0c, #004306);
+    }
+
+
+    .button-animated > span,
+    .button-animated__svg {
+        --clr-main: var(--clr-accent);
+    }
 }

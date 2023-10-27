@@ -6,4 +6,10 @@
 
     --clr-main: #fff;
     --clr-accent: #000;
+    --clr-heart: red;
+
+    --bg-main:
+        repeating-linear-gradient(to left, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
+        linear-gradient(to bottom, #e7e7e7 .01%, #1a1a1a);
 }
