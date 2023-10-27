@@ -51,7 +51,7 @@
 
 .header__title-main {
   align-self: end;
-  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-size: clamp(2.8125rem, 2.4554rem + 1.7857vw, 4.0625rem);
 }
 
 .header__title-sub {
@@ -161,18 +161,18 @@
     -1px 0 1px var(--clr-main, #fff),
       0 1px 1px var(--clr-main, #fff),
         1px 0 1px var(--clr-main, #fff),
-          0 -1px 1px var(--clr-main, #fff); /* Мне показалось, что с тенями намного лучше выглядит. Особенно в Firefox. */
+          0 -1px 1px var(--clr-main, #fff);
   opacity: 0.5;
   mix-blend-mode: hard-light;
 }
 
-/* @supports((text-stroke: 1px var(--clr-main)) or (-webkit-text-stroke: 1px var(--clr-main))) {
+@supports((text-stroke: 1px var(--clr-main)) or (-webkit-text-stroke: 1px var(--clr-main))) {
     .card__label {
         -webkit-text-stroke: 1px var(--clr-main);
         text-stroke: 1px var(--clr-main);
         text-shadow: none;
     }
-} */
+}
 
 .card__like-holder {
   display: flex;
@@ -277,14 +277,6 @@
   font-family: var(--font-family-accent, "Courier, monospace");
   border: 2px solid var(--clr-accent, #000);
   background-color: var(--clr-main, #fff);
-}
-
-.button-animated:focus {
-  outline: 0;
-}
-
-.button-animated:focus-visible {
-  box-shadow: 2px 2px 0 var(--clr-accent, #000);
 }
 
 .button-animated::before {
