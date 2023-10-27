@@ -1,6 +1,5 @@
 .page {
   max-inline-size: 700px;
-  min-inline-size: 320px;
   min-block-size: 100dvb;
   margin: 0 auto;
   font-family: var(--font-family-main, "Arial, sans-serif");
