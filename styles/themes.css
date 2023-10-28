@@ -27,7 +27,6 @@
 
     --clr-main: #000;
     --clr-accent: #00CC14;
-    --clr-heart: var(--clr-accent);
 
     --bg-main:
         repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),
@@ -48,7 +47,6 @@
 
         --clr-main: #000;
         --clr-accent: #00CC14;
-        --clr-heart: var(--clr-accent);
 
         --bg-main:
             repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),

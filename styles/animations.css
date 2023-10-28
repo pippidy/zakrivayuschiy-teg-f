@@ -89,7 +89,7 @@
 }
 
 .heart__sparks {
-    fill: var(--clr-heart);
+    fill: var(--clr-heart, red);
     opacity: 0;
 }
 
@@ -109,7 +109,7 @@
 .like-icon.is-liked .heart__core,
 .like-icon.is-liked .heart__main-body,
 .like-icon.is-liked .heart__contour {
-    fill: var(--clr-heart);
+    fill: var(--clr-heart, red);
 }
 
 .heart__core {
