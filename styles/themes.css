@@ -1,9 +1,33 @@
+/********************* LIGHT styles *********************/
+
+:root.theme-light {
+    --font-var-main: 400;
+    --font-var-title: 700;
+
+    --clr-main: #fff;
+    --clr-accent: #000;
+    --clr-heart: red;
+
+    --bg-main:
+        repeating-linear-gradient(to left, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px),
+        linear-gradient(to bottom, #e7e7e7 .01%, #1a1a1a);
+}
+
+.theme-light .button-animated > span,
+.theme-light .button-animated__svg {
+    --clr-main: #fff;
+}
+
+/********************* DARK styles *********************/
+
 :root.theme-dark {
     --font-var-main: 465;
     --font-var-title: 785;
 
     --clr-main: #000;
     --clr-accent: #00CC14;
+    --clr-heart: var(--clr-accent);
 
     --bg-main:
         repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),
@@ -24,6 +48,7 @@
 
         --clr-main: #000;
         --clr-accent: #00CC14;
+        --clr-heart: var(--clr-accent);
 
         --bg-main:
             repeating-linear-gradient(to left, #000, #000 2px, transparent 2px, transparent 4px),

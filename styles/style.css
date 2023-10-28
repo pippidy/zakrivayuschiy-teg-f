@@ -2,7 +2,7 @@
   max-inline-size: 700px;
   min-block-size: 100dvb;
   margin: 0 auto;
-  font-family: var(--font-family-main, "Arial, sans-serif");
+  font-family: var(--font-family-main, Arial, sans-serif);
   font-variation-settings: 'wght' var(--font-var-main, 400);
   color: var(--clr-accent, #000);
   background: var(--bg-main, #000);
@@ -12,7 +12,7 @@
 }
 
 .header,
-.content {
+.card {
   background-color: var(--clr-main, #fff);
 }
 
@@ -33,12 +33,14 @@
 
 .header {
   display: grid;
-  grid-template-rows: 195px auto 90px;
   justify-content: center;
+  align-content: end;
+  gap: 25px;
   min-block-size: 365px;
+  padding-block-end: 25px;
   margin-block: 100px;
   border: 2px solid var(--clr-accent, #000);
-  font-family: var(--font-family-accent, "Courier, monospace");
+  font-family: var(--font-family-accent, Courier, monospace);
   color: var(--clr-accent, #000);
   text-transform: uppercase;
 }
@@ -48,9 +50,9 @@
   text-align: center;
 }
 
-.header__title-main {
+.header__logo {
   align-self: end;
-  font-size: clamp(2.8125rem, 2.4554rem + 1.7857vw, 4.0625rem);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
 }
 
 .header__title-sub {
@@ -62,14 +64,13 @@
 
 .theme-menu__list {
   position: relative;
-  left: 10px;
+  inset-inline-start: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: .8em;
   width: max-content;
   margin: 0 auto;
-  text-align: left;
 }
 
 .theme-menu__item {
@@ -146,7 +147,13 @@
   inline-size: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+
+  /*
+  Картинка съедет, если её центрировать. Я использовал source image 1800x1200.
+  Изображение 696x696 по какой-то причине экспортируется с бордерами, которые мешают.
+ */
   object-position: 97%;
+
   border-block-end: 2px solid var(--clr-accent, #000);
 }
 
@@ -155,29 +162,28 @@
   z-index: 1;
   inset-block-start: 25px;
   inset-inline-end: 25px;
-  font-family: var(--font-family-accent, "Courier, monospace");
+  font-family: var(--font-family-accent, Courier, monospace);
   text-shadow:
     -1px 0 1px var(--clr-main, #fff),
       0 1px 1px var(--clr-main, #fff),
         1px 0 1px var(--clr-main, #fff),
-          0 -1px 1px var(--clr-main, #fff);
+          0 -1px 1px var(--clr-main, #fff); /* С тенями данный шрифт лучше выглядит, по моему мнению. Особенно в Firefox. */
   opacity: 0.5;
   mix-blend-mode: hard-light;
 }
 
-@supports((text-stroke: 1px var(--clr-main)) or (-webkit-text-stroke: 1px var(--clr-main))) {
+/* @supports((text-stroke: 1px var(--clr-main)) or (-webkit-text-stroke: 1px var(--clr-main))) {
     .card__label {
         -webkit-text-stroke: 1px var(--clr-main);
         text-stroke: 1px var(--clr-main);
         text-shadow: none;
     }
-}
+} */
 
 .card__like-holder {
   display: flex;
   justify-content: flex-end;
   gap: 7px;
-  block-size: 40px;
 }
 
 .card__like-button {
@@ -187,10 +193,19 @@
 }
 
 .card__icon-button {
+  display: flex;
   block-size: 100%;
   aspect-ratio: 1 / 1;
   transition: border .3s ease;
   border: 2px solid transparent;
+}
+
+.card__icon-button:focus {
+  outline: 0;
+}
+
+.card__icon-button:focus-visible {
+  border: 2px solid var(--clr-accent);
 }
 
 .card__text-holder {
@@ -221,11 +236,6 @@
   block-size: 21px;
 }
 
-.save-button__text {
-  position: relative;
-  top: 1.5px;
-}
-
 /********************* DIALOG window *********************/
 
 .dialog {
@@ -253,139 +263,21 @@
 }
 
 .dialog__title {
-  font-family: var(--font-family-accent, "Courier, monospace");
+  font-family: var(--font-family-accent, Courier, monospace);
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
 }
 
 .dialog__close {
+  inline-size: 100%;
   padding-block: 10px;
+  text-transform: uppercase;
 }
 
 .dialog::backdrop {
   background: #000;
   opacity: .75;
-}
-
-/********************* Animated button *********************/
-
-.button-animated {
-  position: relative;
-  transition: box-shadow .3s ease;
-  font-family: var(--font-family-accent, "Courier, monospace");
-  border: 2px solid var(--clr-accent, #000);
-  background-color: var(--clr-main, #fff);
-}
-
-.button-animated::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--clr-accent, #000);
-  transform-origin: 0% 0%;
-  transform: scaleX(0);
-  transition: transform .5s ease-in-out;
-}
-
-.button-animated:hover::before {
-  transform: scaleX(1);
-}
-
-.button-animated:focus {
-  outline: 0;
-}
-
-.button-animated:focus-visible {
-  border: 2px solid var(--clr-accent, #000);
-}
-
-.button-animated > span {
-  position: relative;
-  z-index: 1;
-  color: var(--clr-main, #fff);
-  mix-blend-mode: difference;
-}
-
-.button-animated__svg {
-  color: var(--clr-main, #fff);
-  mix-blend-mode: difference;
-}
-
-/********************** Heart button **********************/
-
-.like-icon {
-  inline-size: 39px;
-}
-
-.heart {
-  transform-origin: center;
-}
-
-.heart__sparks {
-  fill: var(--clr-heart);
-  opacity: 0;
-}
-
-.heart__core,
-.heart__main-body {
-  fill: var(--clr-main, #fff);
-}
-
-.heart__contour,
-.like-icon:hover .heart__core,
-.like-icon:hover .heart__main-body {
-  fill: var(--clr-accent, #000);
-}
-
-.like-icon:active .heart__core,
-.like-icon:active .heart__main-body,
-.like-icon:active .heart__contour,
-.like-icon.is-liked .heart__core,
-.like-icon.is-liked .heart__main-body,
-.like-icon.is-liked .heart__contour {
-  fill: var(--clr-heart);
-}
-
-.heart__core {
-  transition: fill .3s .03s;
-}
-
-.heart__main-body {
-  transition: fill .3s;
-}
-
-.heart__contour {
-  transition: fill .3s;
-}
-
-.like-icon:hover .heart__core {
-  transition: fill .3s;
-}
-
-.like-icon:hover .heart__main-body {
-  transition: fill .3s .05s;
-}
-
-.like-icon.is-liked .heart__core {
-  transition: fill .3s;
-}
-
-.like-icon.is-liked .heart__main-body {
-  transition: fill .3s .05s;
-}
-
-.like-icon.is-liked .heart__contour {
-  transition: fill .3s .06s;
-}
-
-.like-icon.is-liked .heart {
-  animation: heart-scale .3s .1s 2 ease-in alternate;
-}
-
-.like-icon.is-liked .heart__sparks {
-  animation: heart-sparks .3s .3s 2 ease-in alternate;
 }
 
 /********************* FILTERS *********************/
@@ -422,8 +314,11 @@
 
 @media (max-width: 375px) {
   .header {
-    grid-template-rows: 165px auto 90px;
     min-block-size: 325px;
+  }
+
+  .card__label {
+    inset-inline-end: 10px;
   }
 
   .save-button {
@@ -439,4 +334,11 @@
   .dialog {
     padding: 32px 42px;
   }
+}
+
+@media (max-width: 340px) {
+  .header__logo {
+      align-self: end;
+      font-size: clamp(2.8125rem, 2.4554rem + 1.7857vw, 4.0625rem); /* Чтобы лого не вываливалось за пределы родителя при ширине 320px */
+    }
 }

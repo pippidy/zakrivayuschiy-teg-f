@@ -1,18 +1,3 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ theme-dark — класс тёмной темы
-✦ theme-light — класс светлой темы
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
-*/
-
 @keyframes menu-arrow {
     from {
         transform: translateX(0%);
@@ -28,8 +13,12 @@
         transform: scale(1);
     }
 
+    50% {
+        transform: scale(1.3); /* Мне кажется, это значение лучше попадает в референс, чем то, что в брифе указано(1.5). */
+    }
+
     to {
-        transform: scale(1.5);
+        transform: scale(1);
     }
 }
 
@@ -41,4 +30,126 @@
     to {
         opacity: 1;
     }
+}
+
+/********************* Animated button *********************/
+
+.button-animated {
+    position: relative;
+    transition: box-shadow .3s ease;
+    font-family: var(--font-family-accent, Courier, monospace);
+    border: 2px solid var(--clr-accent, #000);
+    background-color: var(--clr-main, #fff);
+}
+
+.button-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--clr-accent, #000);
+    transform-origin: 0% 0%;
+    transform: scaleX(0);
+    transition: transform .5s ease-in-out;
+}
+
+.button-animated:hover::before {
+    transform: scaleX(1);
+}
+
+.button-animated:focus {
+    outline: 0;
+}
+
+.button-animated:focus-visible {
+    box-shadow: 2px 2px 0 var(--clr-accent);
+}
+
+.button-animated>span {
+    position: relative;
+    z-index: 1;
+    color: var(--clr-main, #fff);
+    mix-blend-mode: difference;
+}
+
+.button-animated__svg {
+    color: var(--clr-main, #fff);
+    mix-blend-mode: difference;
+}
+
+/********************** Heart button **********************/
+
+.like-icon {
+    inline-size: 39px;
+    aspect-ratio: 1 / 1;
+}
+
+.heart {
+    transform-origin: center;
+}
+
+.heart__sparks {
+    fill: var(--clr-heart);
+    opacity: 0;
+}
+
+.heart__core,
+.heart__main-body {
+    fill: var(--clr-main, #fff);
+}
+
+.heart__contour,
+.like-icon:hover .heart__core,
+.like-icon:hover .heart__main-body {
+    fill: var(--clr-accent, #000);
+}
+
+.like-icon:active .heart__core,
+.like-icon:active .heart__main-body,
+.like-icon.is-liked .heart__core,
+.like-icon.is-liked .heart__main-body,
+.like-icon.is-liked .heart__contour {
+    fill: var(--clr-heart);
+}
+
+.heart__core {
+    transition: fill .3s .03s linear;
+}
+
+.heart__main-body {
+    transition: fill .3s linear;
+}
+
+.heart__contour {
+    transition: fill .3s linear;
+}
+
+.like-icon:hover .heart__core,
+.like-icon:active .heart__core {
+    transition: fill .3s;
+}
+
+.like-icon:hover .heart__main-body,
+.like-icon:active .heart__main-body {
+    transition: fill .3s .05s linear;
+}
+
+.like-icon.is-liked .heart__core {
+    transition: fill .3s linear;
+}
+
+.like-icon.is-liked .heart__main-body {
+    transition: fill .3s .05s linear;
+}
+
+.like-icon.is-liked .heart__contour {
+    transition: fill .3s .06s linear;
+}
+
+.like-icon.is-liked .heart {
+    animation: heart-scale .3s .1s ease-in alternate;
+}
+
+.like-icon.is-liked .heart__sparks {
+    animation: heart-sparks .3s .3s ease-in alternate;
 }
